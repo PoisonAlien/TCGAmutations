@@ -1,0 +1,106 @@
+---
+title: "TCGAmutations: R Data package for TCGA somatic mutations"
+author: "Anand Mayakonda"
+date: "`r Sys.Date()`"
+output: 
+  html_document:
+    toc: true
+    toc_depth: 3
+    toc_float: true
+    number_sections: true
+    self_contained: yes
+    css: corp-styles.css
+highlight: pygments
+vignette: >
+  %\VignetteIndexEntry{TCGAmutations: Introduction}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+#Introduction
+
+`TCGAmutations` is an R data package containing somatic mutations from TCGA cohorts. This is particularly useful for those working with mutation data from TCGA studies - where most of the time is spent on searching various databases, downloading, compiling and tidying up the data before even the actual analysis is started. This package tries to mitigate the issue by providing pre-compiled, curated somatic mutations from 32 TCGA cohorts along with relevant clinical information for all sequenced samples.
+
+#Requirements
+
+Only dependency is Bioconductor package [maftools](http://www.bioconductor.org/packages/release/bioc/html/maftools.html) and all TCGA cohorts are stored as MAF objects. You can install stable version of maftools package from Bioconductor if you do not have it installed already.
+
+```{r, eval=FALSE}
+source("https://bioconductor.org/biocLite.R")
+biocLite("maftools")
+```
+
+Or you can install it from GitHub for developmental version.
+
+```{r, eval=FALSE}
+devtools::install_github(repo = "PoisonAlien/maftools")
+```
+
+
+#usage
+Usage is simple. Type `tcga_available` to see available datasets, and `tcga_load` to load a desired dataset.
+
+##Availbale datasets
+```{r}
+library(TCGAmutations)
+
+tcga_available()
+```
+
+##Loading a dataset
+`tcga_load` loads user mentioned TCGA dataset into global enviornment. Please be noted that, it will replace any variable with the same name as that of object name. Below example loads TCGA Leukemia cohort `tcga_laml` into current R session.
+
+```{r}
+tcga_load(study = "LAML")
+
+#Typing tcga_laml prints summary of the object
+tcga_laml
+```
+
+
+##MAF object
+Every TCGA cohort is stored and loaded as an MAF object. MAF object includes data.table of somatic variants and clinical information associated with each sample in MAF. There are accessor methods to access elements of MAF object.
+
+```{r}
+#Shows sample summary
+getSampleSummary(x = tcga_laml)
+
+#Shows gene summary
+getGeneSummary(x = tcga_laml)
+
+#Clinical data; printing only first ten columns for display convenience
+getClinicalData(x = tcga_laml)[1:10, 1:10]
+```
+
+See `maftools` vignette for complete details. You can type `browseVignettes(package = "maftools")` for an html vignette. Briefly, you can pass the loaded MAF object into any of the functions from maftools package for analysis and plotting. Below image describes available functions.
+
+![](/home/anand/Documents/maftools/vignettes/overview.png)
+
+
+#FAQ
+##Data source
+All MAF files from "latest" analysis were downloaded from Broad firehose using `firehose_get` tool (here it was "analyses__2016_01_28"). These are the MAFs that were used to generate significanly mutated driver genes for each cohort with MutSig2CV.
+
+```{r, engine='bash', eval=FALSE}
+firehose_get -tasks mutsig analyses latest
+```
+
+Once downloaded, "*-T[P/B/M]-final_analysis_set.maf" files for each cohort was further processed while keeping only required columns, along with Protein_Change information, depth and variant allele frequency details for each variant. This was done as to minimize MAF object size while keeping relevant information.
+
+##Sample types
+All cohorts except SKCM (Skin_Cutaneous_Melanoma) and LAML (Acute_Myeloid_Leukemia) are of type Primary Solid Tumor (TCGA sample type code 01; short letter code TP). 
+
+  * All samples from SKCM are of Metastatic type. (TCGA sample type code 06; short letter code TM)
+  * All samples from LAML are of Primary Blood Derived Cancer - Peripheral Blood type. (TCGA sample type code 03; short letter code TB)
+  
+## Clinical data
+Clinical data was downoaded for each cohort using [TCGAbiolinks](http://www.bioconductor.org/packages/devel/bioc/html/TCGAbiolinks.html) Bioconductor package and matched with MAF samples. Tumor Barcode IDs are restricted to first 12 characters. Survival information values stored in column 'vital_status' are changed from 'Dead' or 'Alive' to binary values 1 and 0. All spaces were substituted with under-scores.
+
+##Support
+If you have any issues, questions please feel free to raise an [issue](https://github.com/PoisonAlien/TCGAmutations/issues) on [GitHub](https://github.com/PoisonAlienTCGAmutations/) page.
+
+#Session Info
+```{r}
+sessionInfo()
+```
+
