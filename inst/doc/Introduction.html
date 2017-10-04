@@ -240,7 +240,8 @@ biocLite(&quot;maftools&quot;)</code></pre>
 <p>Usage is simple. Type <code>tcga_available</code> to see available datasets, and <code>tcga_load</code> to load a desired dataset.</p>
 <div id="availbale-datasets" class="section level2">
 <h2><span class="header-section-number">3.1</span> Availbale datasets</h2>
-<pre class="r"><code>library(TCGAmutations)
+<pre class="r"><code>library(maftools)
+library(TCGAmutations)
 
 tcga_available()</code></pre>
 <pre><code>##     Study_Abbreviation
@@ -529,7 +530,7 @@ getClinicalData(x = tcga_laml)[1:10, 1:10]</code></pre>
 ## [8] base     
 ## 
 ## other attached packages:
-## [1] TCGAmutations_0.1.0   maftools_1.3.55       synchronicity_1.1.9.1
+## [1] maftools_1.3.55       TCGAmutations_0.1.0   synchronicity_1.1.9.1
 ## [4] bigmemory_4.5.19      bigmemory.sri_0.1.3   Biobase_2.36.2       
 ## [7] BiocGenerics_0.22.0  
 ## 
@@ -575,8 +576,8 @@ getClinicalData(x = tcga_laml)[1:10, 1:10]</code></pre>
 ##  [77] BiocParallel_1.10.1        shape_1.4.3               
 ##  [79] GenomeInfoDb_1.12.2        rlang_0.1.2               
 ##  [81] pkgconfig_2.0.1            commonmark_1.2            
-##  [83] prabclus_2.2-6             matrixStats_0.52.2        
-##  [85] bitops_1.0-6               evaluate_0.10.1           
+##  [83] prabclus_2.2-6             bitops_1.0-6              
+##  [85] matrixStats_0.52.2         evaluate_0.10.1           
 ##  [87] lattice_0.20-35            bindr_0.1                 
 ##  [89] GenomicAlignments_1.12.2   cowplot_0.8.0             
 ##  [91] bit_1.1-12                 plyr_1.8.4                
@@ -589,11 +590,11 @@ getClinicalData(x = tcga_laml)[1:10, 1:10]</code></pre>
 ## [105] wordcloud_2.5              cometExactTest_0.1.3      
 ## [107] rmarkdown_1.6              viridis_0.4.0             
 ## [109] GetoptLong_0.1.6           grid_3.4.0                
-## [111] data.table_1.10.4          git2r_0.19.0              
-## [113] blob_1.1.0                 digest_0.6.12             
-## [115] diptest_0.75-7             xtable_1.8-2              
-## [117] stats4_3.4.0               munsell_0.4.3             
-## [119] registry_0.3               viridisLite_0.2.0</code></pre>
+## [111] data.table_1.10.4          blob_1.1.0                
+## [113] digest_0.6.12              diptest_0.75-7            
+## [115] xtable_1.8-2               stats4_3.4.0              
+## [117] munsell_0.4.3              registry_0.3              
+## [119] viridisLite_0.2.0</code></pre>
 </div>
 
 

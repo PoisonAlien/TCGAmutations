@@ -42,6 +42,7 @@ Usage is simple. Type `tcga_available` to see available datasets, and `tcga_load
 
 ##Availbale datasets
 ```{r}
+library(maftools)
 library(TCGAmutations)
 
 tcga_available()
