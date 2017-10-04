@@ -13,7 +13,7 @@ TCGAmutations is an R data package containing somatic mutations from TCGA cohort
 devtools::install_github(repo = "PoisonAlien/TCGAmutations")
 ```
 
-#Requirements
+### Requirements
 
 Only dependency is Bioconductor package [maftools](http://www.bioconductor.org/packages/release/bioc/html/maftools.html) and all TCGA cohorts are stored as MAF objects. You can install stable version of maftools package from Bioconductor if you do not have it installed already.
 
