@@ -75,7 +75,7 @@ getClinicalData(x = tcga_laml)[1:10, 1:10]
 
 See `maftools` vignette for complete details. You can type `browseVignettes(package = "maftools")` for an html vignette. Briefly, you can pass the loaded MAF object into any of the functions from maftools package for analysis and plotting. Below image describes available functions.
 
-![](/home/anand/Documents/maftools/vignettes/overview.png)
+![](overview.png)
 
 
 #FAQ
