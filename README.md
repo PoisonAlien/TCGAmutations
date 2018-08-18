@@ -5,11 +5,17 @@
 ------------------------------------------------------------------------
 
 ### Introduction
-TCGAmutations is an R data package containing somatic mutations from TCGA cohorts. This is particularly useful for those working with mutation data from TCGA studies - where most of the time is spent on searching various databases, downloading, compiling and tidying up the data before even the actual analysis is started. This package tries to mitigate the issue by providing pre-compiled, curated somatic mutations from 32 TCGA cohorts along with relevant clinical information for all sequenced samples.
+TCGAmutations is an R data package containing somatic mutations from TCGA cohorts. This is particularly useful for those working with mutation data from TCGA studies - where most of the time is spent on searching various databases, downloading, compiling and tidying up the data before even the actual analysis is started. This package tries to mitigate the issue by providing pre-compiled, curated somatic mutations from 33 TCGA cohorts along with relevant clinical information for all sequenced samples.
+
+### Data source
+There are two sources from which MAF files were compiled:
+
+  * [Broad Firehose](http://firebrowse.org/)
+  * [TCGA MC3](https://gdc.cancer.gov/about-data/publications/mc3-2017)
 
 ### Installation
 
-```{r, eval=FALSE}
+```r
 devtools::install_github(repo = "PoisonAlien/TCGAmutations")
 ```
 
@@ -17,13 +23,19 @@ devtools::install_github(repo = "PoisonAlien/TCGAmutations")
 
 Only dependency is Bioconductor package [maftools](http://www.bioconductor.org/packages/release/bioc/html/maftools.html) and all TCGA cohorts are stored as MAF objects. You can install stable version of maftools package from Bioconductor if you do not have it installed already.
 
-```{r, eval=FALSE}
+```r
 source("https://bioconductor.org/biocLite.R")
 biocLite("maftools")
 ```
 
 Or you can install it from GitHub for developmental version.
 
-```{r, eval=FALSE}
+```r
 devtools::install_github(repo = "PoisonAlien/maftools")
 ```
+
+## References
+
+Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines
+Kyle Ellrott, Matthew H. Bailey, Gordon Saksena, Kyle R. Covington, Cyriac Kandoth, Chip Stewart, Julian Hess, Singer Ma, Michael McLellan, Heidi J. Sofia, Carolyn Hutter, Gad Getz, David Wheeler, Li Ding, the MC3 Working Group and The Cancer Genome Atlas Research Network The Cancer Genome Atlas Research Network. Cell Syst. 2018 Mar 28; 6(3): 271–281.e7. doi: 10.1016/j.cels.2018.03.002
+  

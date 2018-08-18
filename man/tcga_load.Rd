@@ -4,10 +4,12 @@
 \alias{tcga_load}
 \title{Loads a TCGA cohort}
 \usage{
-tcga_load(study = NULL)
+tcga_load(study = NULL, source = "MC3")
 }
 \arguments{
 \item{study}{a study name to load. Use  \code{\link{tcga_available}} to see available options.}
+
+\item{source}{Can be \code{MC3} or \code{Firehose}. Default \code{MC3}}
 }
 \description{
 Loads a user mentioned TCGA cohort into global enviornment

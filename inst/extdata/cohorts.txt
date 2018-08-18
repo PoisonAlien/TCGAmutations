@@ -1,33 +1,35 @@
-Study_Abbreviation	Study_Name	Cohort_Size
-ACC	Adrenocortical_carcinoma	62
-BLCA	Bladder_Urothelial_Carcinoma	395
-BRCA	Breast_invasive_carcinoma	978
-CESC	Cervical_squamous_cell_carcinoma_and_endocervical_adenocarcinoma	194
-CHOL	Cholangiocarcinoma	35
-COAD	Colon_adenocarcinoma	367
-DLBC	Lymphoid_Neoplasm_Diffuse_Large_B-cell_Lymphoma	48
-ESCA	Esophageal_carcinoma	185
-GBM	Glioblastoma_multiforme	283
-HNSC	Head_and_Neck_squamous_cell_carcinoma	511
-KICH	Kidney_Chromophobe	66
-KIRC	Kidney_renal_clear_cell_carcinoma	476
-KIRP	Kidney_renal_papillary_cell_carcinoma	282
-LAML	Acute_Myeloid_Leukemia	193
-LGG	Brain_Lower_Grade_Glioma	516
-LIHC	Liver_hepatocellular_carcinoma	373
-LUAD	Lung_adenocarcinoma	533
-LUSC	Lung_squamous_cell_carcinoma	178
-OV	Ovarian_serous_cystadenocarcinoma	466
-PAAD	Pancreatic_adenocarcinoma	126
-PCPG	Pheochromocytoma_and_Paraganglioma	179
-PRAD	Prostate_adenocarcinoma	498
-READ	Rectum_adenocarcinoma	122
-SARC	Sarcoma	247
-SKCM	Skin_Cutaneous_Melanoma	290
-STAD	Stomach_adenocarcinoma	393
-TGCT	Testicular_Germ_Cell_Tumors	147
-THCA	Thyroid_carcinoma	496
-THYM	Thymoma	120
-UCEC	Uterine_Corpus_Endometrial_Carcinoma	248
-UCS	Uterine_Carcinosarcoma	57
-UVM	Uveal_Melanoma	80
+Study_Abbreviation	Study_Name	MC3	Firehose
+ACC	Adrenocortical_carcinoma	92	62 [dx.doi.org/10.7908/C1610ZNC]
+BLCA	Bladder_Urothelial_Carcinoma	411	395 [dx.doi.org/10.7908/C1MW2GGF]
+BRCA	Breast_invasive_carcinoma	1020	978 [dx.doi.org/10.7908/C1TB167Z]
+CESC	Cervical_squamous_cell_carcinoma_and_endocervical_adenocarcinoma	289	194 [dx.doi.org/10.7908/C1MG7NV6]
+CHOL	Cholangiocarcinoma	36	35 [dx.doi.org/10.7908/C1K936V8]
+COAD	Colon_adenocarcinoma	404	367 [dx.doi.org/10.7908/C1DF6QJD]
+DLBC	Lymphoid_Neoplasm_Diffuse_Large_B-cell_Lymphoma	37	48 [dx.doi.org/10.7908/C1X066DK]
+ESCA	Esophageal_carcinoma	184	185 [dx.doi.org/10.7908/C1BV7FZC]
+GBM	Glioblastoma_multiforme	390	283 [dx.doi.org/10.7908/C1XG9QGN]
+HNSC	Head_and_Neck_squamous_cell_carcinoma	507	511 [dx.doi.org/10.7908/C18C9VM5]
+KICH	Kidney_Chromophobe	66	66 [dx.doi.org/10.7908/C1765DQK]
+KIRC	Kidney_renal_clear_cell_carcinoma	369	476 [dx.doi.org/10.7908/C10864RM]
+KIRP	Kidney_renal_papillary_cell_carcinoma	281	282 [dx.doi.org/10.7908/C19C6WTF]
+LAML	Acute_Myeloid_Leukemia	140	193 [dx.doi.org/10.7908/C1D21X2X]
+LGG	Brain_Lower_Grade_Glioma	511	516 [dx.doi.org/10.7908/C1MC8ZDF]
+LIHC	Liver_hepatocellular_carcinoma	363	373 [dx.doi.org/10.7908/C128070B]
+LUAD	Lung_adenocarcinoma	515	533 [dx.doi.org/10.7908/C17P8XT3]
+LUSC	Lung_squamous_cell_carcinoma	485	178 [dx.doi.org/10.7908/C1X34WXV]
+MESO	Mesothelioma	82	NA
+OV	Ovarian_serous_cystadenocarcinoma	411	466 [dx.doi.org/10.7908/C1736QC5]
+PAAD	Pancreatic_adenocarcinoma	177	126 [dx.doi.org/10.7908/C1513XNS]
+PCPG	Pheochromocytoma_and_Paraganglioma	179	179 [dx.doi.org/10.7908/C13T9GN0]
+PRAD	Prostate_adenocarcinoma	497	498 [dx.doi.org/10.7908/C1Z037MV]
+READ	Rectum_adenocarcinoma	149	122 [dx.doi.org/10.7908/C1S46RDB]
+SARC	Sarcoma	236	247 [dx.doi.org/10.7908/C137785M]
+SKCM	Skin_Cutaneous_Melanoma	466	290 [dx.doi.org/10.7908/C1J67GCG]
+STAD	Stomach_adenocarcinoma	439	393 [dx.doi.org/10.7908/C1C828SM]
+TGCT	Testicular_Germ_Cell_Tumors	129	147 [dx.doi.org/10.7908/C1S1820D]
+THCA	Thyroid_carcinoma	492	496 [dx.doi.org/10.7908/C16W99KN]
+THYM	Thymoma	123	120 [dx.doi.org/10.7908/C15T3JZ6]
+UCEC	Uterine_Corpus_Endometrial_Carcinoma	530	248 [dx.doi.org/10.7908/C1C828T2]
+UCS	Uterine_Carcinosarcoma	57	57 [dx.doi.org/10.7908/C1PC31W8]
+UVM	Uveal_Melanoma	80	80 [dx.doi.org/10.7908/C1S1821V]
+Unknown	Samples_I_couldnt_figure_out_the_source	77	NA

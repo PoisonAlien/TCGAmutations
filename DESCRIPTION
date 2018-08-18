@@ -1,10 +1,10 @@
 Package: TCGAmutations
 Type: Package
 Title: Pre-compiled somatic mutations from TCGA cohorts
-Version: 0.1.0
+Version: 0.2.0
 Author: Anand Mayakonda
 Maintainer: Anand Mayakonda <anandmt3@gmail.com>
-Description: This package contains pre-compiled somatic mutations from 32 TCGA cohorts along with relevant clinical data stored as MAF objects.
+Description: This package contains pre-compiled somatic mutations from 33 TCGA cohorts along with relevant clinical data stored as MAF objects. MAF files were derived from two sources - Broad Firehose and MC3 project. See Vignette for details.
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
