@@ -37,5 +37,5 @@ devtools::install_github(repo = "PoisonAlien/maftools")
 ## References
 
 Scalable Open Science Approach for Mutation Calling of Tumor Exomes Using Multiple Genomic Pipelines
-Kyle Ellrott, Matthew H. Bailey, Gordon Saksena, Kyle R. Covington, Cyriac Kandoth, Chip Stewart, Julian Hess, Singer Ma, Michael McLellan, Heidi J. Sofia, Carolyn Hutter, Gad Getz, David Wheeler, Li Ding, the MC3 Working Group and The Cancer Genome Atlas Research Network The Cancer Genome Atlas Research Network. Cell Syst. 2018 Mar 28; 6(3): 271–281.e7. doi: 10.1016/j.cels.2018.03.002
+Kyle Ellrott, Matthew H. Bailey, Gordon Saksena, et. al. Cell Syst. 2018 Mar 28; 6(3): 271–281.e7. https://doi.org/10.1016/j.cels.2018.03.002
   
