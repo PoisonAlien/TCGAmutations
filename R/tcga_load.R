@@ -18,10 +18,10 @@ tcga_load = function(study = NULL, source = "MC3"){
   study = toupper(x = study)
 
   if(source == "MC3"){
-    study.dat = system.file('extdata/MC3/', paste0(study, ".RData"), package = 'TCGAmutations')
+    study.dat = system.file('extdata/MC3/', paste0(study, ".RDs"), package = 'TCGAmutations')
     doi = "https://doi.org/10.1016/j.cels.2018.03.002"
   }else if(source == "Firehose"){
-    study.dat = system.file('extdata/Firehose/', paste0(study, ".RData"), package = 'TCGAmutations')
+    study.dat = system.file('extdata/Firehose/', paste0(study, ".RDs"), package = 'TCGAmutations')
     if(study.dat != ""){
       cohorts = system.file('extdata', 'cohorts.txt', package = 'TCGAmutations')
       cohorts = data.table::fread(input = cohorts, data.table = FALSE)
@@ -38,9 +38,9 @@ tcga_load = function(study = NULL, source = "MC3"){
   if(study.dat == ""){
     stop(study, " not available. Use tcga_available() to see available cohorts.")
   } else{
-    load(file = study.dat, verbose = TRUE, envir = .GlobalEnv)
     message(paste0("Successfully loaded TCGA ", study, "!"))
     #message(paste0("See MAF object tcga_", tolower(study)))
     message(paste0("Please cite ", doi , " for MAF source."))
+    return(readRDS(file = study.dat))
   }
 }
