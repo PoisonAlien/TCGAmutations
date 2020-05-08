@@ -4,12 +4,15 @@
 \alias{tcga_load}
 \title{Loads a TCGA cohort}
 \usage{
-tcga_load(study = NULL, source = "MC3")
+tcga_load(study = NULL, source = "MC3", reassign = FALSE)
 }
 \arguments{
-\item{study}{a study name to load. Use  \code{\link{tcga_available}} to see available options.}
+\item{study}{Study names to load. Use  \code{\link{tcga_available}} to see available options.}
 
 \item{source}{Can be \code{MC3} or \code{Firehose}. Default \code{MC3}}
+
+\item{reassign}{If `TRUE`, return a \code{MAF} object instread of loading data into global environment.
+It will be usefull if you want to operate multiple \code{MAF}s.}
 }
 \description{
 Loads a user mentioned TCGA cohort into global enviornment

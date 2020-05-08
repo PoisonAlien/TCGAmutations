@@ -8,7 +8,7 @@ Description: This package contains pre-compiled somatic mutations from 33 TCGA c
 License: MIT + file LICENSE
 Encoding: UTF-8
 LazyData: true
-RoxygenNote: 6.0.1
+RoxygenNote: 7.1.0
 Depends: R (>= 3.3)
 Imports: maftools
 Suggests: knitr,
