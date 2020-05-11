@@ -11,7 +11,7 @@
 #' @export
 #' @seealso \code{\link{tcga_available}}
 #'
-tcga_load = function(study = NULL, source = "MC3", reassign = FALSE){
+tcga_load = function(study = NULL, source = "MC3", reassign = TRUE){
 
   if(is.null(study)){
     stop("Please provide a study name. Use tcga_available() to see available cohorts.")
