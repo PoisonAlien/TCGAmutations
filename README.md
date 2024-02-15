@@ -158,11 +158,11 @@ maftools::mafSurvival(maf = brca, genes = c("TP53"), time = "CDR_PFI.time", Stat
 
 **Q:How did I compile the data?**
 
-**A:**See [compile_MC3.R](https://github.com/PoisonAlien/TCGAmutations/tree/master/inst/script/compile_MC3.R) for the details.
+**A:** See [compile_MC3.R](https://github.com/PoisonAlien/TCGAmutations/tree/master/inst/script/compile_MC3.R) for the details.
 
 **Q: Are there any non-TCGA/external cohorts**
 
-**A:**Please open an [issue](https://github.com/PoisonAlien/TCGAmutations/issues) if you have any particular publication in mind that you want me to include in the package.
+**A:** Please open an [issue](https://github.com/PoisonAlien/TCGAmutations/issues) if you have any particular publication in mind that you want me to include in the package.
 
 ### References
 
