@@ -10,7 +10,7 @@ tcga_load(study = NULL, source = "MC3")
 \item{study}{Study names to load. Use  \code{\link{tcga_available}} to see available options.}
 
 \item{source}{Can be \code{MC3} or \code{Firehose}. Default \code{MC3}
-It will be usefull if you want to operate multiple \code{MAF}s.}
+It will be useful if you want to operate multiple \code{MAF}s.}
 }
 \description{
 Loads a user mentioned TCGA cohort into global enviornment
