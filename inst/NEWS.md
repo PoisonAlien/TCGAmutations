@@ -1,3 +1,6 @@
+## CHANGES IN VERSION 0.4.0 
+- `CCLE` (DepMap Public 24Q2) maf has been added.
+
 ## CHANGES IN VERSION 0.3.0 
 
 - `tcga_load()` returns the MAF object instead of loading into environment

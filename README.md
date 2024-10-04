@@ -4,58 +4,14 @@
 
 ------------------------------------------------------------------------
 
-### Introduction
-`TCGAmutations` is an R data package containing somatic mutations from TCGA cohorts. This is particularly useful for those working with mutation data from TCGA studies - where most of the time is spent on searching various databases, downloading, compiling and tidying up the data before even the actual analysis is started. This package tries to mitigate the issue by providing pre-compiled, curated somatic mutations from 33 TCGA cohorts along with relevant clinical information for all sequenced samples.
+## Introduction
+`TCGAmutations` is an R data package containing somatic mutations from CCLE and TCGA cohorts. This is particularly useful for those working with mutation data from TCGA studies - where most of the time is spent on searching various databases, downloading, compiling and tidying up the data before even the actual analysis is started. This package tries to mitigate the issue by providing pre-compiled, curated somatic mutations from 33 TCGA cohorts and 2427 cell line profiles from CCLE - along with relevant clinical information for all sequenced samples.
 
 
 ### Installation
 
 ```r
 BiocManager::install("PoisonAlien/TCGAmutations")
-```
-
-### TCGA cohorts
-
-`tcga_available()` function lists the available cohorts along with the source, sample size and DOI for citation.
-
-```r
->TCGAmutations::tcga_available()
- Study_Abbreviation   MC3                          Firehose
-                <char> <int>                            <char>
- 1:                ACC    92  62 [dx.doi.org/10.7908/C1610ZNC]
- 2:               BLCA   411 395 [dx.doi.org/10.7908/C1MW2GGF]
- 3:               BRCA  1026 978 [dx.doi.org/10.7908/C1TB167Z]
- 4:               CESC   291 194 [dx.doi.org/10.7908/C1MG7NV6]
- 5:               CHOL    36  35 [dx.doi.org/10.7908/C1K936V8]
- 6:               COAD   406 367 [dx.doi.org/10.7908/C1DF6QJD]
- 7:               DLBC    37  48 [dx.doi.org/10.7908/C1X066DK]
- 8:               ESCA   185 185 [dx.doi.org/10.7908/C1BV7FZC]
- 9:                GBM   400 283 [dx.doi.org/10.7908/C1XG9QGN]
-10:               HNSC   509 511 [dx.doi.org/10.7908/C18C9VM5]
-11:               KICH    66  66 [dx.doi.org/10.7908/C1765DQK]
-12:               KIRC   370 476 [dx.doi.org/10.7908/C10864RM]
-13:               KIRP   282 282 [dx.doi.org/10.7908/C19C6WTF]
-14:               LAML   140 193 [dx.doi.org/10.7908/C1D21X2X]
-15:                LGG   525 516 [dx.doi.org/10.7908/C1MC8ZDF]
-16:               LIHC   365 373 [dx.doi.org/10.7908/C128070B]
-17:               LUAD   517 533 [dx.doi.org/10.7908/C17P8XT3]
-18:               LUSC   485 178 [dx.doi.org/10.7908/C1X34WXV]
-19:               MESO    82                                  
-20:                 OV   411 466 [dx.doi.org/10.7908/C1736QC5]
-21:               PAAD   178 126 [dx.doi.org/10.7908/C1513XNS]
-22:               PCPG   184 179 [dx.doi.org/10.7908/C13T9GN0]
-23:               PRAD   498 498 [dx.doi.org/10.7908/C1Z037MV]
-24:               READ   150 122 [dx.doi.org/10.7908/C1S46RDB]
-25:               SARC   239 247 [dx.doi.org/10.7908/C137785M]
-26:               SKCM   468 290 [dx.doi.org/10.7908/C1J67GCG]
-27:               STAD   439 393 [dx.doi.org/10.7908/C1C828SM]
-28:               TGCT   134 147 [dx.doi.org/10.7908/C1S1820D]
-29:               THCA   500 496 [dx.doi.org/10.7908/C16W99KN]
-30:               THYM   123 120 [dx.doi.org/10.7908/C15T3JZ6]
-31:               UCEC   531 248 [dx.doi.org/10.7908/C1C828T2]
-32:                UCS    57  57 [dx.doi.org/10.7908/C1PC31W8]
-33:                UVM    80  80 [dx.doi.org/10.7908/C1S1821V]
-    Study_Abbreviation   MC3                          Firehose
 ```
 
 ### Usage
@@ -65,12 +21,60 @@ There are only two commands
    * `tcga_available()` - Lists the available cohorts in the package
    * `tcga_load()` - Takes a cohort name and returns the corresponding MAF object 
 
-There are two sources from which MAF files were compiled:
+There are sources from which MAF files were compiled:
 
   * [TCGA MC3](https://gdc.cancer.gov/about-data/publications/mc3-2017)
   * [Broad Firehose](http://firebrowse.org/)
+  * [CCLE](https://depmap.org/portal/data_page/?tab=currentRelease)
 
-### MC3
+## Cohorts
+
+`tcga_available()` function lists the available cohorts along with the source and sample size.
+
+```r
+> tcga_available()
+    Study_Abbreviation            source   n_samples
+                <char>            <char>      <char>
+ 1:                ACC MC3|Firehose|CCLE    92|62|NA
+ 2:               BLCA MC3|Firehose|CCLE  411|395|NA
+ 3:               BRCA MC3|Firehose|CCLE 1026|978|NA
+ 4:               CESC MC3|Firehose|CCLE  291|194|NA
+ 5:               CHOL MC3|Firehose|CCLE    36|35|NA
+ 6:               COAD MC3|Firehose|CCLE  406|367|NA
+ 7:               DLBC MC3|Firehose|CCLE    37|48|NA
+ 8:               ESCA MC3|Firehose|CCLE  185|185|NA
+ 9:                GBM MC3|Firehose|CCLE  400|283|NA
+10:               HNSC MC3|Firehose|CCLE  509|511|NA
+11:               KICH MC3|Firehose|CCLE    66|66|NA
+12:               KIRC MC3|Firehose|CCLE  370|476|NA
+13:               KIRP MC3|Firehose|CCLE  282|282|NA
+14:               LAML MC3|Firehose|CCLE  140|193|NA
+15:                LGG MC3|Firehose|CCLE  525|516|NA
+16:               LIHC MC3|Firehose|CCLE  365|373|NA
+17:               LUAD MC3|Firehose|CCLE  517|533|NA
+18:               LUSC MC3|Firehose|CCLE  485|178|NA
+19:               MESO MC3|Firehose|CCLE    82|NA|NA
+20:                 OV MC3|Firehose|CCLE  411|466|NA
+21:               PAAD MC3|Firehose|CCLE  178|126|NA
+22:               PCPG MC3|Firehose|CCLE  184|179|NA
+23:               PRAD MC3|Firehose|CCLE  498|498|NA
+24:               READ MC3|Firehose|CCLE  150|122|NA
+25:               SARC MC3|Firehose|CCLE  239|247|NA
+26:               SKCM MC3|Firehose|CCLE  468|290|NA
+27:               STAD MC3|Firehose|CCLE  439|393|NA
+28:               TGCT MC3|Firehose|CCLE  134|147|NA
+29:               THCA MC3|Firehose|CCLE  500|496|NA
+30:               THYM MC3|Firehose|CCLE  123|120|NA
+31:               UCEC MC3|Firehose|CCLE  531|248|NA
+32:                UCS MC3|Firehose|CCLE    57|57|NA
+33:                UVM MC3|Firehose|CCLE    80|80|NA
+34:        CCLE_2024Q2 MC3|Firehose|CCLE  NA|NA|2427
+    Study_Abbreviation            source   n_samples
+```
+
+### TCGA cohorts
+
+#### MC3
 
 ```r
 > luad <- TCGAmutations::tcga_load(study = "LUAD")
@@ -95,7 +99,35 @@ An object of class  MAF
 14:                  total  155249 300.288    202
 ```
 
-### Firehose
+Clinical data for MC3 are obtained from harmonized [clinical data resource](https://www.cell.com/cell/fulltext/S0092-8674(18)30229-0). Thanks to [@mitchellcheung8](https://github.com/mitchellcheung8) for pointing to the reference and the data source.
+
+
+Recommendations for survival analysis (as suggested by the publication)
+
+
+> Recommended use of the endpoints: 
+> For clinical outcome endpoints, we recommend the use of `PFI` for progression-free interval, and `OS` for overall survival. Both endpoints are relatively accurate. Given the relatively short follow-up time, `PFI` is  preferred over `OS`. Detailed recommendations please refer to Table 3 in the accompanying paper.
+
+Below are the column names for the event and the timepoint.
+
+| endpoint                        | event column name | timepoint column name |
+|---------------------------------|-------------------|-----------------------|
+| PFI (Progression-free interval) | `CDR_PFI`           | `CDR_PFI.time`          |
+| OS (Overall survival)           | `CDR_OS`           | `CDR_OS.time`           |
+| DSS (Disease-specific survival) | `CDR_DSS`           | `CDR_DSS.time`          |
+| DFI (Disease-free interval)     | `CDR_DFI`           | `CDR_DFI.time`         |
+
+example usage for survival:
+
+```r
+#OS
+maftools::mafSurvival(maf = brca, genes = c("TP53"), time = "CDR_OS.time", Status = "CDR_OS")
+
+#PFI
+maftools::mafSurvival(maf = brca, genes = c("TP53"), time = "CDR_PFI.time", Status = "CDR_PFI")
+```
+
+#### Firehose
 
 Change `source` argument to `Firehose` for MAF files from [Broad Firehose](https://gdac.broadinstitute.org)
 
@@ -123,46 +155,65 @@ An object of class  MAF
 
 Returned MAF objects can be passed to any functions from [maftools](https://bioconductor.org/packages/release/bioc/html/maftools.html) for visualization and analysis.
 
+### CCLE
 
-### Clinical data
+All the somatic point mutations and indels called in the DepMap cell lines. 
 
-Clinical data for MC3 are obtained from harmonized [clinical data resource](https://www.cell.com/cell/fulltext/S0092-8674(18)30229-0). Thanks to [@mitchellcheung8](https://github.com/mitchellcheung8) for pointing to the reference and the data source.
+Note that this object contains data from [DepMap 24Q2 Public](https://doi.org/10.25452/figshare.plus.25880521.v1) relase. Data was kindly formatted into MAF file and made available by DepMap project. See below _References_ for proper citation. 
 
-
-Recommendations for survival analysis (as suggested by the publication)
-
-
-> Recommended use of the endpoints:	
-> For clinical outcome endpoints, we recommend the use of `PFI` for progression-free interval, and `OS` for overall survival. Both endpoints are relatively accurate. Given the relatively short follow-up time, `PFI` is  preferred over `OS`. Detailed recommendations please refer to Table 3 in the accompanying paper.
-
-Below are the column names for the event and the timepoint.
-
-| endpoint                        | event column name | timepoint column name |
-|---------------------------------|-------------------|-----------------------|
-| PFI (Progression-free interval) | `CDR_PFI`           | `CDR_PFI.time`          |
-| OS (Overall survival)           | `CDR_OS`           | `CDR_OS.time`           |
-| DSS (Disease-specific survival) | `CDR_DSS`           | `CDR_DSS.time`          |
-| DFI (Disease-free interval)     | `CDR_DFI`           | `CDR_DFI.time`         |
-
-example usage for survival:
 
 ```r
-#OS
-maftools::mafSurvival(maf = brca, genes = c("TP53"), time = "CDR_OS.time", Status = "CDR_OS")
-
-#PFI
-maftools::mafSurvival(maf = brca, genes = c("TP53"), time = "CDR_PFI.time", Status = "CDR_PFI")
+> ccle = tcga_load(study = "CCLE_2024Q2", source = "CCLE")
+Loading CCLE_2024Q2. Please cite: https://doi.org/10.25452/figshare.plus.25880521.v1 for reference
+> ccle
+An object of class  MAF 
+Index: <ID>
+                        ID summary    Mean Median
+                    <char>  <char>   <num>  <num>
+ 1:             NCBI_Build  GRCh38      NA     NA
+ 2:                 Center    <NA>      NA     NA
+ 3:                Samples    2427      NA     NA
+ 4:                 nGenes   19605      NA     NA
+ 5:        Frame_Shift_Del   52762  21.740      6
+ 6:        Frame_Shift_Ins   18349   7.560      2
+ 7:           In_Frame_Del    6250   2.575      2
+ 8:           In_Frame_Ins    1973   0.813      0
+ 9:      Missense_Mutation  776466 319.928    172
+10:      Nonsense_Mutation   51593  21.258     10
+11:       Nonstop_Mutation    1159   0.478      0
+12:            Splice_Site   30655  12.631      7
+13: Translation_Start_Site    1921   0.792      0
+14:                  total  941128 387.774    202
 ```
+
+Above MAF includes 1788 unqiue cell lines (from 2427 profiles) spanning 87 primary diseases. See `ccle@clinical.data` to learn more. 
+
+Below are some helpful subset commands:
+
+```r
+#Get all AML cell lines
+maftools::subsetMaf(maf = ccle, clinQuery = "DepmapModelType == 'AML'")
+
+#Get all cell lines of cervical origin
+maftools::subsetMaf(maf = ccle, clinQuery = "OncotreeLineage == 'Cervix'")
+
+#Get HELA
+maftools::subsetMaf(maf = ccle, clinQuery = "StrippedCellLineName == 'HELA'")
+
+#Get cell lines with WGS
+maftools::subsetMaf(maf = ccle, clinQuery = "Datatype == 'wgs'")
+```
+
 
 ### FAQ
 
 **Q:How did I compile the data?**
 
-**A:** See [compile_MC3.R](https://github.com/PoisonAlien/TCGAmutations/tree/master/inst/script/compile_MC3.R) for the details.
+**A:**See [compile_MC3.R](https://github.com/PoisonAlien/TCGAmutations/tree/master/inst/script/compile_MC3.R) and [compile_CCLE.R](https://github.com/PoisonAlien/TCGAmutations/tree/master/inst/script/compile_CCLE.R) for the details.
 
 **Q: Are there any non-TCGA/external cohorts**
 
-**A:** Please open an [issue](https://github.com/PoisonAlien/TCGAmutations/issues) if you have any particular publication in mind that you want me to include in the package.
+**A:**Please open an [issue](https://github.com/PoisonAlien/TCGAmutations/issues) if you have any particular publication in mind that you want me to include in the package.
 
 ### References
 
@@ -178,4 +229,14 @@ For MC3 cohort
 For clinical data resource
 
 **_An Integrated TCGA Pan-Cancer Clinical Data Resource to Drive High-Quality Survival Outcome Analytics.Liu, Jianfang et al. [Cell](https://doi.org/10.1016/j.cell.2018.02.052)_**
+
+For CCLE 
+
+Please cite the below figshare for the data:
+
+**_DepMap, Broad (2024). DepMap 24Q2 Public. Figshare+. Dataset. https://doi.org/10.25452/figshare.plus.25880521.v1**_
+
+Please cite the below If you’d like to cite The DepMap project:
+
+**_Tsherniak A, Vazquez F, Montgomery PG, Weir BA, Kryukov G, Cowley GS, Gill S, Harrington WF, Pantel S, Krill-Burger JM, Meyers RM, Ali L, Goodale A, Lee Y, Jiang G, Hsiao J, Gerath WFJ, Howell S, Merkel E, Ghandi M, Garraway LA, Root DE, Golub TR, Boehm JS, Hahn WC. Defining a Cancer Dependency Map. Cell. 2017 Jul 27;170(3):564-576._**
 

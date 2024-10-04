@@ -17,24 +17,47 @@ tcga_load = function(study = NULL, source = "MC3"){
     stop("Please provide a study name. Use tcga_available() for available cohorts.")
   }
   
-  source = match.arg(arg = source, choices = c("MC3", "Firehose"))
+  source = match.arg(arg = source, choices = c("MC3", "Firehose", "CCLE"))
   
   study = toupper(x = study)
   cohorts = system.file('extdata', 'cohorts.txt', package = 'TCGAmutations')
   cohorts = data.table::fread(file = cohorts)
-  cohorts = cohorts[cohorts$Study_Abbreviation %in% study]
+  cohorts_like = cohorts[Study_Abbreviation %like% study]
+  cohorts = cohorts[Study_Abbreviation %in% study]
   
   if(nrow(cohorts) == 0){
-    stop("Could not find requested datasets!\nUse tcga_available() for available cohorts.")
+    if(nrow(cohorts_like) > 0){
+        stop("Could not find the requested datasets!\n Did you mean: ", paste(cohorts_like$Study_Abbreviation, collapse = ", "), "\nUse tcga_available() for available cohorts.")
+      }else{
+        stop("Could not find the requested datasets!\nUse tcga_available() for available cohorts.")    
+      }
+    
   }
   
   if(source == "MC3"){
     study.dat = system.file('extdata/MC3/', paste0(cohorts$Study_Abbreviation, ".RDs"), package = 'TCGAmutations')
+    study.dat = setdiff(study.dat, "")
+    if(length(study.dat) == 0){
+      stop("Could not find the requested cohorts in ", source)
+    }
     doi = rep("https://doi.org/10.1016/j.cels.2018.03.002", nrow(cohorts))
-  }else{
+  }else if(source == "Firehose"){
     warning("Use Firehose data at your own risk. MAF and clinical data has not been updated in a long time. It is strongly suggested to use the default `MC3` cohort")
     study.dat = system.file('extdata/Firehose/', paste0(cohorts$Study_Abbreviation, ".RDs"), package = 'TCGAmutations')
+    study.dat = setdiff(study.dat, "")
+    if(length(study.dat) == 0){
+      stop("Could not find the requested cohorts in ", source)
+    }
     doi = cohorts$Firehose
+    doi = unlist(data.table::tstrsplit(x = doi, spli = "\\[", keep = 2))
+    doi = gsub(pattern = "\\]$", replacement = "", x = doi)
+  }else{
+    study.dat = system.file('extdata/CCLE/', paste0(cohorts$Study_Abbreviation, ".RDs"), package = 'TCGAmutations')
+    study.dat = setdiff(study.dat, "")
+    if(length(study.dat) == 0){
+      stop("Could not find the requested cohorts in ", source)
+    }
+    doi = cohorts$CCLE
     doi = unlist(data.table::tstrsplit(x = doi, spli = "\\[", keep = 2))
     doi = gsub(pattern = "\\]$", replacement = "", x = doi)
   }
